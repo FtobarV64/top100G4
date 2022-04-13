@@ -10,3 +10,23 @@
 DROP DATABASE peliculas;
 CREATE DATABASE peliculas;
 \c peliculas
+-- 2. Cargar ambos archivos a su tabla correspondiente. (1 Punto)
+-- 2a.- Creamos tabla peliculas y cargamos los datos del csv
+CREATE TABLE peliculas(
+    id SERIAL,
+    pelicula VARCHAR(70),
+    agnoEstreno SMALLINT,
+    director VARCHAR(30),
+    PRIMARY KEY (id)
+);
+\copy peliculas FROM 'peliculas.csv' csv header;
+-- 2b.- Creamos tabla reparto y cargamos los datos del csv
+CREATE TABLE reparto(
+    peliculaId INT,
+    reparto VARCHAR(40),
+    FOREIGN KEY (peliculaId) REFERENCES peliculas(id)
+);
+\copy reparto FROM 'reparto.csv' csv;
+-- Revisamos la carga de los datos. Para ello, contamos los registros en cada tabla
+SELECT COUNT(id) AS NroPeliculas FROM peliculas;
+SELECT COUNT(reparto) AS CantActores FROM reparto;
