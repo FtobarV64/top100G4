@@ -37,3 +37,8 @@ SELECT id AS idTitanic FROM peliculas WHERE Pelicula = 'Titanic';
 SELECT reparto FROM reparto WHERE peliculasId = 2;
 -- 4b.- Con relación de tablas (Join) y a través de la tabla películas 
 SELECT r.reparto FROM peliculas AS p JOIN reparto AS r ON p.id = r.peliculaId WHERE p.pelicula = 'Titanic';
+-- 5. Consultar en cuántas películas del top 100 participa Harrison Ford. (2 Puntos)
+SELECT COUNT(peliculaId) AS HarrisonFord FROM reparto WHERE reparto = 'Harrison Ford';
+-- 6. Indicar las películas estrenadas entre los años 1990 y 1999 ordenadas por título de
+-- manera ascendente. (1 punto)
+SELECT Pelicula FROM peliculas WHERE AgnoEstreno BETWEEN 1990 AND 1999 ORDER BY pelicula ASC;
