@@ -30,3 +30,10 @@ CREATE TABLE reparto(
 -- Revisamos la carga de los datos. Para ello, contamos los registros en cada tabla
 SELECT COUNT(id) AS NroPeliculas FROM peliculas;
 SELECT COUNT(reparto) AS CantActores FROM reparto;
+-- 3. Obtener el ID de la película “Titanic”. (1 Punto)
+SELECT id AS idTitanic FROM peliculas WHERE Pelicula = 'Titanic';
+-- 4. Listar a todos los actores que aparecen en la película "Titanic". (1 Puntos)
+-- 4a.- Con consulta directa en reparto por número de id
+SELECT reparto FROM reparto WHERE peliculasId = 2;
+-- 4b.- Con relación de tablas (Join) y a través de la tabla películas 
+SELECT r.reparto FROM peliculas AS p JOIN reparto AS r ON p.id = r.peliculaId WHERE p.pelicula = 'Titanic';
